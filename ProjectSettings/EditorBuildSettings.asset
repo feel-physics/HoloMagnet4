@@ -8,6 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/HoloMagnet36/Scenes/Scene2D.unity
     guid: fbe41faacaafb3443a17d25096cacd5e
-  - enabled: 1
+  - enabled: 0
     path: Assets/HoloMagnet36/Scenes/Scene3D.unity
     guid: ad789a3a8fdb79f4895241cf0bdd93b8
