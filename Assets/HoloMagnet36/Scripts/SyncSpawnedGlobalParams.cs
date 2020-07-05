@@ -28,5 +28,9 @@ namespace FeelPhysics.HoloMagnet36
 
         [SyncData]
         public SyncBool ShouldHoldBarMagnetZPosition;
-    }
+
+		//現在のアプリのシーケンス状態共有管理用.
+		[SyncData]
+		public SyncInteger AppSequenceStateToInt;
+	}
 }
