@@ -13,6 +13,11 @@ namespace FeelPhysics.HoloMagnet36
         {
             eventData.Use(); // イベントが使われたことを記録して、他の処理に受け取られるのを防ぐ
 
+			ToggleHoldBarMagnetZPosition();
+        }
+
+		public void ToggleHoldBarMagnetZPosition( )
+		{
             GameObject GlobalParams = GameObject.FindGameObjectWithTag("Global Params");
             if (GlobalParams != null)
             {
@@ -29,6 +34,8 @@ namespace FeelPhysics.HoloMagnet36
                     syncSpawnedGlobalParams.ShouldHoldBarMagnetZPosition.Value = false;
                 }
             }
-        }
+			return;
+		}
+
     }
 }

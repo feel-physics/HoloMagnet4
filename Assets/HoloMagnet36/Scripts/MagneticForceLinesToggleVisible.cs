@@ -10,6 +10,12 @@ public class MagneticForceLinesToggleVisible : MonoBehaviour, IInputClickHandler
     {
         eventData.Use();
 
+		ToggleMagneticForceLinesVisible();
+	}
+
+
+	public void ToggleMagneticForceLinesVisible()
+	{
         GameObject GlobalParams = GameObject.FindGameObjectWithTag("Global Params");
         if (GlobalParams != null)
         {
@@ -26,5 +32,8 @@ public class MagneticForceLinesToggleVisible : MonoBehaviour, IInputClickHandler
                 syncSpawnedGlobalParams.ShouldShowMagneticForceLines.Value = false;
             }
         }
+
+		return;
 	}
+
 }

@@ -25,6 +25,33 @@ namespace FeelPhysics.HoloMagnet36
         {
             eventData.Use(); // イベントが使われたことを記録して、他の処理に受け取られるのを防ぐ
 
+			ToggleCompass2D();
+        }
+
+        private void Awake()
+        {
+            // If we don't have a spawn parent transform, then spawn the object on this transform.
+            if (spawnParentTransform == null)
+            {
+                spawnParentTransform = transform;
+            }
+        }
+
+        // Use this for initialization
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+
+		public void ToggleCompass2D()
+		{
             GameObject GlobalParams = GameObject.FindGameObjectWithTag("Global Params");
             if (GlobalParams != null)
             {
@@ -61,27 +88,8 @@ namespace FeelPhysics.HoloMagnet36
                     }
                 }
             }
-        }
+			return;
+		}
 
-        private void Awake()
-        {
-            // If we don't have a spawn parent transform, then spawn the object on this transform.
-            if (spawnParentTransform == null)
-            {
-                spawnParentTransform = transform;
-            }
-        }
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }

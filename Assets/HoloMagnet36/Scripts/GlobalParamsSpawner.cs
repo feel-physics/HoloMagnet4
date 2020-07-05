@@ -20,12 +20,38 @@ namespace FeelPhysics.HoloMagnet36
         private Transform spawnParentTransform;
 
         public string PrefabTag;
-        private bool shouldExistPrefab;
+        private bool shouldExistPrefab = false;
 
         public void OnInputClicked(InputClickedEventData eventData)
         {
             eventData.Use(); // イベントが使われたことを記録して、他の処理に受け取られるのを防ぐ
 
+			ToggleSpawnGlobalParams();
+        }
+
+        private void Awake()
+        {
+            // If we don't have a spawn parent transform, then spawn the object on this transform.
+            if (spawnParentTransform == null)
+            {
+                spawnParentTransform = transform;
+            }
+        }
+
+        // Use this for initialization
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+		public void ToggleSpawnGlobalParams()
+		{
             if (shouldExistPrefab)
             {
                 var prefabs = GameObject.FindGameObjectsWithTag(PrefabTag);
@@ -53,27 +79,8 @@ namespace FeelPhysics.HoloMagnet36
 
                 shouldExistPrefab = true;
             }
-        }
+			return;
+		}
 
-        private void Awake()
-        {
-            // If we don't have a spawn parent transform, then spawn the object on this transform.
-            if (spawnParentTransform == null)
-            {
-                spawnParentTransform = transform;
-            }
-        }
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
