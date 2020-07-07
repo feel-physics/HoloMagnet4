@@ -99,17 +99,20 @@ public class Compass2DManaged : MonoBehaviour
         // 合力の大きさ
         //float brightnessOfForce = forceResultant.magnitude * brightness;
         float brightnessOfForce = forceResultant.sqrMagnitude * brightness;
-        //MyHelper.DebugLog(brightnessOfForce.ToString());
+		//MyHelper.DebugLog(brightnessOfForce.ToString());
 
-        // 色の強さを変える
-        materialNorth.color = ColorWithBrightness(true , materialNorth.color, brightnessOfForce);
-        materialSouth.color = ColorWithBrightness(false, materialSouth.color, brightnessOfForce);
+		Color northColor = materialNorth.GetColor("_Emission");
+		Color southColor = materialSouth.GetColor("_Emission");
+
+		// 色の強さを変える
+		materialNorth.color = ColorWithBrightness(true , northColor, brightnessOfForce);
+        materialSouth.color = ColorWithBrightness(false, southColor, brightnessOfForce);
 
         // Emissioonを変える
         // Unity5のStandardシェーダのパラメタをスクリプトからいじろうとして丸一日潰れた話 - D.N.A.のおぼえがき
         // http://dnasoftwares.hatenablog.com/entry/2015/03/19/100108
-        materialNorth.SetColor("_Emission", ColorWithBrightness(true, materialNorth.color, brightnessOfForce));
-        materialSouth.SetColor("_Emission", ColorWithBrightness(false, materialNorth.color, brightnessOfForce));
+        materialNorth.SetColor("_Emission", ColorWithBrightness(true, northColor, brightnessOfForce));
+        materialSouth.SetColor("_Emission", ColorWithBrightness(false, southColor, brightnessOfForce));
     }
 
     // カラーオブジェクトをプリロード（あらかじめ作っておく）して入れ替える
