@@ -36,7 +36,7 @@ public class Compass2DManaged : MonoBehaviour
 
         // Update Managerに自分を登録する
         UpdateManager um = GameObject.Find("UpdateManager").GetComponent<UpdateManager>();
-        um.list2D.Add(this);
+		um.list2D.Add(this);
     }
 
     public void UpdateMe()
@@ -143,8 +143,18 @@ public class Compass2DManaged : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Update Managerに自分を登録する
-        UpdateManager um = GameObject.Find("UpdateManager").GetComponent<UpdateManager>();
-        um.list2D.Remove(this);
-    }
+		// Update Managerの登録を削除する
+		// このタイミングで実行が終了する場合、UpdateManagerが先に削除される可能性もあるため、nullチェックを挟んでおく.
+		GameObject updateManagerObj = GameObject.Find("UpdateManager");
+		if (updateManagerObj == null)
+		{
+			return;
+		}
+        UpdateManager um = updateManagerObj.GetComponent<UpdateManager>();
+		if (um == null)
+		{
+			return;
+		}
+		um.list2D.Remove(this);
+	}
 }
