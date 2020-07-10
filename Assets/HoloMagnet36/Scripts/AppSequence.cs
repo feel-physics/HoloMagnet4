@@ -100,7 +100,6 @@ public class AppSequence : MonoBehaviour {
 				{
 					return;
 				}
-				holdBarMagnetZPosition.ToggleHoldBarMagnetZPosition();
 				StartCoroutine(CallToggleCompass2DAnd3D(true));
 				syncSpawnedGlobalParams.AppSequenceStateToInt.Value = (int)AppSequenceState.ThreeDimensionalMagneticField;
 				break;
@@ -110,6 +109,7 @@ public class AppSequence : MonoBehaviour {
 				{
 					return;
 				}
+				holdBarMagnetZPosition.ToggleHoldBarMagnetZPosition();
 				StartCoroutine(CallToggleCompass2DAnd3D(false));
 				magneticForceLinesToggleVisible.ToggleMagneticForceLinesVisible();
 				syncSpawnedGlobalParams.AppSequenceStateToInt.Value = (int)AppSequenceState.MagneticFieldLines;
@@ -138,6 +138,7 @@ public class AppSequence : MonoBehaviour {
 	{
 		if (isFirst2D)
 		{
+			holdBarMagnetZPosition.ToggleHoldBarMagnetZPosition();
 			compassPlacer2DSpawner.ToggleCompass2D();
 		}
 		else
@@ -151,6 +152,7 @@ public class AppSequence : MonoBehaviour {
 		}
 		else
 		{
+			holdBarMagnetZPosition.ToggleHoldBarMagnetZPosition();
 			compassPlacer2DSpawner.ToggleCompass2D();
 		}
 	}
