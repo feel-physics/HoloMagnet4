@@ -109,9 +109,9 @@ public class AppSequence : MonoBehaviour {
 				{
 					return;
 				}
-				holdBarMagnetZPosition.ToggleHoldBarMagnetZPosition();
-				StartCoroutine(CallToggleCompass2DAnd3D(false));
+				compassPlacer3DSpawner.ToggleCompass3D();
 				magneticForceLinesToggleVisible.ToggleMagneticForceLinesVisible();
+				StartCoroutine(CallAdjustBarMagnetZPosition());
 				syncSpawnedGlobalParams.AppSequenceStateToInt.Value = (int)AppSequenceState.MagneticFieldLines;
 				break;
 
@@ -120,7 +120,6 @@ public class AppSequence : MonoBehaviour {
 				{
 					return;
 				}
-				compassPlacer2DSpawner.ToggleCompass2D();
 				magneticForceLinesToggleVisible.ToggleMagneticForceLinesVisible();
 				syncSpawnedGlobalParams.AppSequenceStateToInt.Value = (int)AppSequenceState.StartSharing;
 				break;
@@ -133,7 +132,7 @@ public class AppSequence : MonoBehaviour {
 		return;
 	}
 
-	//2Dと3Dのコンパスの表示切り替え時にDestroyの影響と思われるが同じフレームでは正常に動作されられないため、1フレーム待って実行させるためのコルーチン.
+	//2Dと3Dのコンパスの表示切り替え時にDestroyの影響と思われるが同じフレームでは正常に動作されられないため、少し待って実行させるためのコルーチン.
 	private IEnumerator CallToggleCompass2DAnd3D(bool isFirst2D)
 	{
 		if (isFirst2D)
@@ -145,7 +144,7 @@ public class AppSequence : MonoBehaviour {
 		{
 			compassPlacer3DSpawner.ToggleCompass3D();
 		}
-		yield return null;
+		yield return new WaitForSeconds(1.0f);
 		if (isFirst2D)
 		{
 			compassPlacer3DSpawner.ToggleCompass3D();
@@ -155,6 +154,14 @@ public class AppSequence : MonoBehaviour {
 			holdBarMagnetZPosition.ToggleHoldBarMagnetZPosition();
 			compassPlacer2DSpawner.ToggleCompass2D();
 		}
+	}
+
+	//Zの位置をホールドと解除をセットで実行して位置を補正させるが、同期のため、少し待って実行させるためのコルーチン.
+	private IEnumerator CallAdjustBarMagnetZPosition()
+	{
+		holdBarMagnetZPosition.ToggleHoldBarMagnetZPosition();
+		yield return new WaitForSeconds(1.0f);
+		holdBarMagnetZPosition.ToggleHoldBarMagnetZPosition();
 	}
 
 
