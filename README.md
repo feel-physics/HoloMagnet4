@@ -61,21 +61,56 @@ Unity上でのビルドが完了したら、出力先に指定したフォルダ
 #### Visual Studioから直接HoloLensへインストールする場合
 データ転送可能なUSBケーブルにて、PCとHoloLensを接続します。<br>
 Visual Studioの配置ターゲットをx86、Deviceに変更します。<br>
+![VisualStudio_x86](https://user-images.githubusercontent.com/14026964/90338515-17724d00-e025-11ea-8121-4a322dbcd14b.png)
+![VisualStudio_Device](https://user-images.githubusercontent.com/14026964/90338516-17724d00-e025-11ea-9b3f-1832a34251e8.png)
+
 Deviceと書かれた再生マークのあるボタンをクリックし、実機へのインストールとデバッグ実行を行います。<br>
 <br>
 初めてのPCとHoloLensの組み合わせで転送を行う場合は、PINを入力する必要があります。<br>
+![VisualStudio_Pin](https://user-images.githubusercontent.com/14026964/90338519-180ae380-e025-11ea-9093-e95e8c8f9916.png)
 
 HoloLens上で、設定アプリを起動し、「更新とセキュリティ」の項目を選択します。<br>
+![HoloLens_Setting](https://user-images.githubusercontent.com/14026964/90338510-15a88980-e025-11ea-8370-d952b300c2c9.jpg)
 左側のメニューから「開発者向け」を選択し、デバイスの検出の項目にある、「ペアリング」ボタンをAirTapします。<br>
+![HoloLens_Pairing](https://user-images.githubusercontent.com/14026964/90338513-16d9b680-e025-11ea-94bc-0219b353a819.jpg)
+
 「デバイスのペアリング」と表示され、下に6桁の数字が表示されるので、Visual Studio側に表示されているPINの入力ウィンドウにて同じ数字を入力して、OKをクリックします。<br>
+![HoloLens_Pin](https://user-images.githubusercontent.com/14026964/90338623-e5151f80-e025-11ea-95fc-ec719aa0125d.jpg)
 
 #### パッケージデータを作成し、デバイスポータル経由でHoloLensへインストールする場合
 Visual Studioの上部メニューの[プロジェクト]より[ストア]→[アプリパッケージの作成]を選択します。<br>
-アプリパッケージの作成ウィンドウで、「サイドロード用のパッケージを作成します。」を選択し、次へボタンをクリックします。<br>
-「作成するパッケージとソリューション構成マッピングを選択する」の項目内で、アーキテクチャが「x86」となっている項目のみにチェックを入れ、作成ボタンをクリックします。<br>
+![App_Package](https://user-images.githubusercontent.com/14026964/90338520-18a37a00-e025-11ea-82a7-81679fff8d42.png)
 
+アプリパッケージの作成ウィンドウで、「サイドロード用のパッケージを作成します。」を選択し、次へボタンをクリックします。<br>
+![App_Package_Window](https://user-images.githubusercontent.com/14026964/90338521-193c1080-e025-11ea-927d-f88b20e8f30f.png)
+
+「作成するパッケージとソリューション構成マッピングを選択する」の項目内で、アーキテクチャが「x86」となっている項目のみにチェックを入れ、作成ボタンをクリックします。<br>
+![App_Package_Target](https://user-images.githubusercontent.com/14026964/90338522-193c1080-e025-11ea-8a20-c7fc311bb65c.png)
+
+パッケージの作成が完了すると、パッケージの出力先が表示されます。<br>
+出力先には「.appxbundle」ファイル等が生成されています。<br>
+
+パッケージの作成が完了したら、HoloLensにデバイスポータル経由でインストールを行います。<br>
+HoloLensをPCにUSBケーブルで優先接続し、「localhost:10080」とブラウザのURLに入力します。<br>
+デバイスポータルの概要、セットアップ手順については、[公式ドキュメント](https://docs.microsoft.com/ja-jp/windows/mixed-reality/using-the-windows-device-portal)を参照。<br>
+
+ブラウザからHoloLensのデバイスポータルにアクセスしたら、左側のメニューより「Apps」を選択します。<br>
+![Device_Portal_Apps](https://user-images.githubusercontent.com/14026964/90345540-64bde100-e05c-11ea-9175-ee0d141f99ad.png)
+
+Deploy Appsの項目にて、「ファイルの選択」ボタンから、先ほど生成された「.appxbundle」ファイルを選択します。<br>
+
+また、初回インストール時等、必要に応じて「Allow me to select framework packages」にチェックを入れ、「Next」ボタンをクリックします。<br>
+「Allow me to select framework packages」にチェックを入れた場合は、「Choose any necessary dependencies:」の「ファイルの選択」ボタンから、「.appxbundle」ファイルの入っているフォルダにある、「Dependencies」→「x86」とフォルダを開き、その中にある「.appx」ファイルを全て選択します。<br>
+![Device_Portal_Apps_Dependencies](https://user-images.githubusercontent.com/14026964/90345542-65ef0e00-e05c-11ea-97cb-872c457e6d64.png)
+
+最後に「Install」ボタンをクリックし、HoloLensへのインストールを行います。<br>
+<br>
+※デバイスポータルの画面レイアウトはHoloLensのOSバージョンによって多少異なります。<br>
+
+<br>
 
 [デプロイの参考URL(公式ドキュメント)](https://docs.microsoft.com/ja-jp/windows/mixed-reality/using-visual-studio)
+
 
 ## 操作方法
 
