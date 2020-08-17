@@ -3,6 +3,10 @@
 ## 概要
 [HoloMagnet3](https://github.com/feel-physics/HoloMagnet3)の体験をベースに、複数人で体験を共有することに特化させたHoloLens用アプリです。<br>
 旧HoloToolkitのSharing機能を利用し、サーバー用PCを用意することで、簡単に複数人で体験を共有させることができます。<br>
+
+![App_Cap](https://user-images.githubusercontent.com/14026964/90363866-5c869580-e09e-11ea-9d55-b729ef38f568.png)
+![App_Cap](https://user-images.githubusercontent.com/14026964/90363870-5e505900-e09e-11ea-9359-f9fe283a3c90.png)
+
 ※HoloLens 2には対応しておりません。<br>
 ※Unityのバージョンは2017.4.xを使用しています。<br>
 
