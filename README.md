@@ -1,3 +1,5 @@
+[日本語](README.md) / [English](README-EN.md)
+
 # HoloMagnet4
 
 ## 概要
