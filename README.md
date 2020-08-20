@@ -1,151 +1,151 @@
-[日本語](README.md) / [English](README-EN.md)
+[日本語](README-JP.md) / [English](README.md)
 
 # HoloMagnet4
 
-## 概要
+## Overview
 
-[HoloMagnet3](https://github.com/feel-physics/HoloMagnet3)の体験をベースに、複数人で体験を共有することに特化させたHoloLens用アプリです。  
-旧HoloToolkitのSharing機能を利用し、サーバー用PCを用意することで、簡単に複数人で体験を共有させることができます。  
+Based on the experience of [HoloMagnet3](https://github.com/feel-physics/HoloMagnet3), this application specializes in sharing the experience for HoloLens with multiple users.  
+Using the sharing function of the old HoloToolkit, you can easily share the experience with multiple users by preparing a PC for the server.  
 
 ![App_Cap](https://user-images.githubusercontent.com/14026964/90363866-5c869580-e09e-11ea-9d55-b729ef38f568.png)
 ![App_Cap](https://user-images.githubusercontent.com/14026964/90363870-5e505900-e09e-11ea-9359-f9fe283a3c90.png)
 
-※HoloLens 2には対応しておりません。  
-※Unityのバージョンは2017.4.xを使用しています。  
+\* HoloLens2 is not supported.  
+\* Using Unity version 2017.4.x.  
 
-## 環境構築について
+## Environment
 
-アプリを実行するHoloLensとは別に、サーバーとなるWindows 10のPCを1台用意し、同じネットワークに接続する必要があります。
-※LANのファイアウォール設定によっては正常に通信を行うことができないことがあります。
+In addition to the HoloLens for running the app, you need a Windows 10 PC as a server and connect it to the same network.  
+\* Depending on your LAN's firewall settings, you may not be able to communicate normally.
 
-## Sharingサーバ起動
+## Starting the Sharing server
 
-#### Unityを経由して起動する場合
+#### The case of launching via Unity
 
-UnityEditorを起動後、上部メニューの[Mixed Reality Toolkit]メニューより[Sharing Service]→[Launch Sharing Service]と選択し、Sharingサーバー用プログラムを起動させます。  
+After launching UnityEditor, in the top menu, select [Mixed Reality Toolkit], and then [Sharing Service] -> [Launch Sharing Service] to launch the program for the Sharing server.  
 ![Launch_Sharing_Service](https://user-images.githubusercontent.com/14026964/90336462-04f11700-e017-11ea-8b19-33a81efb7740.png)
 
-#### コマンドラインを経由して起動する場合
+#### The case of launching via the command line
 
-HoloMagnet4/External/HoloToolkit/Sharing/Serverでコマンドプロンプトを起動します。  
-起動したら以下のコマンドを実行します。  
+Launch a command prompt in HoloMagnet4/External/HoloToolkit/Sharing/Server.  
+Execute the following command after launching.  
 ```SharingService.exe -local```
 
-### IPアドレスを確認する
+### Check the IP address
 
-Sharingサーバーを起動すると、以下の記載の下にIPアドレスが表示されます。  
+When you start the Sharing server, the IP address will be displayed below the description below.  
 ```Local IP addresses are:```
 ![IP_Address](https://user-images.githubusercontent.com/14026964/90336465-06224400-e017-11ea-8777-6c56318bda34.png)
 
-## セットアップ
+## Setup
 
-現在、UnityEditor上で特定のIPアドレスを指定したものをパッケージ化し、HoloLensにインストール後、動作させるような形になっています。  
+Currently, we package a specific IP address in UnityEditor, install it in HoloLens, and make it work.  
 
 ### HoloMagnet4
 
-#### IPアドレスの設定
+#### The setting of IP address
 
-Unityエディタでプロジェクトを開き、Projectタブより以下のパスのScene2Dを開きます。  
+Open the project in the Unity editor and open Scene2D of the following path on the Project tab.  
 ```HoloMagnet4/Assets/HoloMagnet36/Scenes```
-※Unityのバージョンは2017.4.xを使用しています。  
+\* Using Unity version 2017.4.x.  
 ![Open_Scene](https://user-images.githubusercontent.com/14026964/90336466-06224400-e017-11ea-96d2-b7479efea62c.png)
 
-Hierarchyタブから「Managers」の下にある「Sharing」を選択し、  
-Inspectorタブから、SharingStageコンポーネントにある「Server Address」に、IPアドレスの確認手順にて確認したIPアドレスを設定します。  
+From the Hierarchy tab, select "Sharing" under "Managers",  
+after that from the Inspector tab, set the IP address that you confirmed in checking the IP address procedure to "Server Address" in the SharingStage component.  
 ![Setting_IP_Address](https://user-images.githubusercontent.com/14026964/90336467-06bada80-e017-11ea-944f-0da1bb2e19aa.png)
 
-### ビルド
+### Build
 
-上部メニューの[File]メニューより[Build Settings ...]を選択し、Build Settingsウィンドウを表示します。  
-Platformの項目で、Universal Windows Platformが選択され、Unityのアイコンが表示されていることを確認します。  
-もしUniversal Windows Platformの項目にUnityのアイコンが表示されていない場合は、Universal Windows Platformを選択し、Switch Platformボタンを押して、プラットフォームを切り替えます。  
+In the top menu, click the \[File\] menu and select \[Build Settings ...\] to display the Build Settings window.  
+In the Platform item, make sure that the Universal Windows Platform is selected and the Unity icon is displayed.  
+If you don't see the Unity icon in the Universal Windows Platform item, select the Universal Windows Platform and press the Switch Platform button to switch platforms.  
 ![Build_Settings](https://user-images.githubusercontent.com/14026964/90336468-07537100-e017-11ea-84f2-f908b442bc3a.png)
 
-Universal Windows Platformの項目にUnityのアイコンが表示されていることが確認できたら、ウィンドウ下部のBuildボタンを押し、出力先を指定してUnity上でのビルドを実行します。  
-出力先にはプロジェクトを開く際に指定したフォルダ内に、新規でフォルダを作り、そのフォルダを指定するようにします。  
-(保存先となるフォルダやフォルダ内の既存のファイルの影響で、正常にビルドができない可能性があるため、出力先には、プロジェクトフォルダ内に新規で専用に作成したフォルダを指定することが推奨されます。)  
+Once you see the Unity icon in the Universal Windows Platform item, press the Build button at the bottom of the window and specify the output destination to build on Unity.  
+For the output destination, create a new folder in the folder that you specified when you opened the project and specify that folder.  
+(It is recommended to specify a new, dedicated folder in the project folder as the output destination, as it may not be possible to build properly due to the influence of the destination folder or existing files in the folder.)  
 ![Build_Settings_Window](https://user-images.githubusercontent.com/14026964/90336469-07537100-e017-11ea-9337-29ddcc5abf70.png)
 
-Unity上でのビルドが完了したら、出力先に指定したフォルダのあるフォルダを開いた状態でエクスプローラーが起動します。  
-出力先フォルダ内に.slnファイルが生成されているので、Visual Studio 2017にて開きます。  
-(現在デフォルトでは「181026-HoloMagnet41rt」という名前で.slnファイルが生成されます。)  
+Once the build is complete on Unity, Explorer will be launched with the folder you specified as the output destination folder open.  
+As a .sln file will be generated in the output folder, which you can open in Visual Studio 2017.  
+(It currently generates a .sln file by default with the name "181026-HoloMagnet41rt".)  
 
-### 各HoloLensへのデプロイ
+### Deploying to each HoloLens
 
-#### Visual Studioから直接HoloLensへインストールする場合
+#### The case of installing to HoloLens directly from Visual Studio
 
-データ転送可能なUSBケーブルにて、PCとHoloLensを接続します。  
-Visual Studioの配置ターゲットをx86、Deviceに変更します。  
+Connect the HoloLens to your PC with a data transferable USB cable.  
+Change the Visual Studio deployment target to x86, Device.  
 ![VisualStudio_x86](https://user-images.githubusercontent.com/14026964/90338515-17724d00-e025-11ea-8121-4a322dbcd14b.png)
 ![VisualStudio_Device](https://user-images.githubusercontent.com/14026964/90338516-17724d00-e025-11ea-9b3f-1832a34251e8.png)
 
-Deviceと書かれた再生マークのあるボタンをクリックし、実機へのインストールとデバッグ実行を行います。  
+Click the button with play mark as "Device" written and install it to the device and debug.  
 
-初めてのPCとHoloLensの組み合わせで転送を行う場合は、PINを入力する必要があります。  
+If this is your transfer it with a first time PC and HoloLens combination, you will need to enter a PIN.  
 ![VisualStudio_Pin](https://user-images.githubusercontent.com/14026964/90338519-180ae380-e025-11ea-9093-e95e8c8f9916.png)
 
-HoloLens上で、設定アプリを起動し、「更新とセキュリティ」の項目を選択します。  
+On HoloLens, launch the Settings app and select the "Updates & Security" item.  
 ![HoloLens_Setting](https://user-images.githubusercontent.com/14026964/90338510-15a88980-e025-11ea-8370-d952b300c2c9.jpg)
-左側のメニューから「開発者向け」を選択し、デバイスの検出の項目にある、「ペアリング」ボタンをAirTapします。  
+Select "For Developers" from the menu on the left, and then AirTap the "Pairing" button in the device detection item.  
 ![HoloLens_Pairing](https://user-images.githubusercontent.com/14026964/90338513-16d9b680-e025-11ea-94bc-0219b353a819.jpg)
 
-「デバイスのペアリング」と表示され、下に6桁の数字が表示されるので、Visual Studio側に表示されているPINの入力ウィンドウにて同じ数字を入力して、OKをクリックします。  
+When you see "Pairing Devices" and a 6-digit number appears at the bottom, input the same number in the PIN entry window on the Visual Studio side, then click OK.  
 ![HoloLens_Pin](https://user-images.githubusercontent.com/14026964/90338623-e5151f80-e025-11ea-95fc-ec719aa0125d.jpg)
 
-#### パッケージデータを作成し、デバイスポータル経由でHoloLensへインストールする場合
+#### The case of creating package data and install to HoloLens via Device Portal
 
-Visual Studioの上部メニューの[プロジェクト]より[ストア]→[アプリパッケージの作成]を選択します。  
+In the top menu of Visual Studio, select "Project", "Store" -> "Create App Package".  
 ![App_Package](https://user-images.githubusercontent.com/14026964/90338520-18a37a00-e025-11ea-82a7-81679fff8d42.png)
 
-アプリパッケージの作成ウィンドウで、「サイドロード用のパッケージを作成します。」を選択し、次へボタンをクリックします。  
+In the Create App Package window, select "Create a package for sideloading" and click the Next button.  
 ![App_Package_Window](https://user-images.githubusercontent.com/14026964/90338521-193c1080-e025-11ea-927d-f88b20e8f30f.png)
 
-「作成するパッケージとソリューション構成マッピングを選択する」の項目内で、アーキテクチャが「x86」となっている項目のみにチェックを入れ、作成ボタンをクリックします。  
+In the "Select package to create and solution configuration mapping" item, check only the item with the architecture of "x86" and click the Create button.  
 ![App_Package_Target](https://user-images.githubusercontent.com/14026964/90338522-193c1080-e025-11ea-8a20-c7fc311bb65c.png)
 
-パッケージの作成が完了すると、パッケージの出力先が表示されます。  
-出力先には「.appxbundle」ファイル等が生成されています。  
+When the package creation is complete, the output destination for the package will be displayed.  
+".appxbundle" file, etc will be created in the output destination.  
 
-パッケージの作成が完了したら、HoloLensにデバイスポータル経由でインストールを行います。  
-HoloLensをPCにUSBケーブルで有線接続し、「localhost:10080」とブラウザのURLに入力します。  
-デバイスポータルの概要、セットアップ手順については、[公式ドキュメント](https://docs.microsoft.com/ja-jp/windows/mixed-reality/using-the-windows-device-portal)を参照。  
+Once the package has been created, install it to HoloLens via the Device Portal.  
+Connect the HoloLens to your PC with a USB cable by wire and type "localhost:10080" into your browser's URL.  
+See the [official documentation](https://docs.microsoft.com/ja-jp/windows/mixed-reality/using-the-windows-device-portal) for an overview of the Device Portal and setup instructions.  
 
-ブラウザからHoloLensのデバイスポータルにアクセスしたら、左側のメニューより「Apps」を選択します。  
+Once you've accessed the Device Portal in HoloLens from your browser, select "Apps" from the menu on the left.  
 ![Device_Portal_Apps](https://user-images.githubusercontent.com/14026964/90345540-64bde100-e05c-11ea-9175-ee0d141f99ad.png)
 
-Deploy Appsの項目にて、「ファイルの選択」ボタンから、先ほど生成された「.appxbundle」ファイルを選択します。  
+In the Deploy Apps item, click the "Select File" button and select the ".appxbundle" file that was generated earlier.  
 
-また、初回インストール時等、必要に応じて「Allow me to select framework packages」にチェックを入れ、「Next」ボタンをクリックします。  
-「Allow me to select framework packages」にチェックを入れた場合は、「Choose any necessary dependencies:」の「ファイルの選択」ボタンから、「.appxbundle」ファイルの入っているフォルダにある、「Dependencies」→「x86」とフォルダを開き、その中にある「.appx」ファイルを全て選択します。  
+Check the "Allow me to select framework packages" checkbox and click the "Next" button, if necessary, for example, when installing for the first time.
+If you have checked "Allow me to select framework packages", click the ”Select” button in "Choose any necessary dependencies:" and open "Dependencies" -> "x86" folder and select all the ".appx" files in the folder containing the ".appxbundle" file.  
 ![Device_Portal_Apps_Dependencies](https://user-images.githubusercontent.com/14026964/90345542-65ef0e00-e05c-11ea-97cb-872c457e6d64.png)
 
-最後に「Install」ボタンをクリックし、HoloLensへのインストールを行います。  
-  
-※デバイスポータルの画面レイアウトはHoloLensのOSバージョンによって多少異なります。  
+Finally, click the "Install" button and install it to HoloLens.  
 
-[デプロイの参考URL(公式ドキュメント)](https://docs.microsoft.com/ja-jp/windows/mixed-reality/using-visual-studio)
+\* The screen layout of the Device Portal will vary slightly depending on the HoloLens OS version.  
 
-## 操作方法
+[Reference URL for deployment (official documentation)](https://docs.microsoft.com/ja-jp/windows/mixed-reality/using-visual-studio)
 
-### シーン遷移方法
+## How to operate
 
-HoloLens上でアプリを起動後、正面を向いたまま、視点を上にあげていくと、ボタンがあります。  
-このボタンに視線方向正面の丸いカーソルを合わせてAirTap動作をすることで、シーンを順番に遷移させていき、体験できるコンテンツを切り替えていくことができます。  
+### How to transition Scene
 
-### シーン説明
+After launching the app in HoloLens, keep facing front and raise gradually your point of view to the top, you will see buttons.  
+By aligning the round cursor in front of the eye direction with this button and performing AirTap operation, you can transition scenes in order and then switch the contents you can experience.
 
-#### 2次元
+### Scene Description
 
-上下左右方向に展開したコンパスに対して、棒磁石を上下左右方向に移動させ、奥行のない平面空間で、磁力が、どの位置にどの向きで働いているのか見ることができます。  
-正面方向に人差し指を立てて手を構え、親指と人差し指でつまみ、手を動かすことで、棒磁石をつまんで平行移動させることができます。  
-移動することのできる棒磁石には、自分の位置からピンク色のラインがつながっている棒磁石のみとなります。  
+#### 2D
 
-#### 3次元
+By moving the bar magnet up and down and left and right against the compasses spread out vertically and horizontally, you can see the magnetic force working at what position and in what direction on a flat space with no depth.  
+By holding your hand in the front direction with your index finger upright, pinch with your thumb and index finger and move your hand, you can pinch the bar magnet to move it in a parallel direction.  
+The only bar magnet that can be moved is the one with a pink line connecting it to your position.
 
-上下左右方向に加え、奥行方向も展開したコンパス内を棒磁石が移動し、2次元のシーンで確認した磁力が3次元的にはどのように働いているのかを見ることができます。  
-このシーンでは棒磁石を動かすことはできず、左右に往復移動する棒磁石を様々な方向から見ることができるシーンとなっています。  
+#### 3D
 
-#### 磁力線
+In addition to the vertical and horizontal movements, the bar magnets move in the compasses spread in the depth direction, making it possible to see how the magnetic force observed in the 2D Scene works in 3D.  
+In this Scene, the bar magnets cannot be moved, but you can watch from various directions that the bar magnets moving from side to side.
 
-棒磁石に対して磁力線を表示し、磁力線を見ることができます。  
-体験者1人に対して棒磁石が表示されているため、複数人で体験することにより、複数の棒磁石が表示され、それぞれの棒磁石が磁力線にどのような影響を与えるのかを確認することもできます。  
+#### Lines of magnetic force
+
+You can display lines of magnetic force against a bar magnet and see the lines of the magnetic force.  
+Since the one bar magnet is displayed for one person who experiences it, Multiple magnets are displayed through multiple users' experiences, therefore you can watch how each bar magnet affects the lines of magnetic force.
