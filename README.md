@@ -76,32 +76,32 @@ As a .sln file will be generated in the output folder, which you can open in Vis
 
 Connect the HoloLens to your PC with a data transferable USB cable.  
 Change the Visual Studio deployment target to x86, Device.  
-![VisualStudio_x86](https://user-images.githubusercontent.com/14026964/90338515-17724d00-e025-11ea-8121-4a322dbcd14b.png)
-![VisualStudio_Device](https://user-images.githubusercontent.com/14026964/90338516-17724d00-e025-11ea-9b3f-1832a34251e8.png)
+![VisualStudio_x86](https://user-images.githubusercontent.com/14026964/91731726-2b4fae80-ebe2-11ea-9b69-0a8b12e551a5.png)
+![VisualStudio_Device](https://user-images.githubusercontent.com/14026964/91731732-2db20880-ebe2-11ea-9cfe-ae371e31b015.png)
 
 Click the button with play mark as "Device" written and install it to the device and debug.  
 
 If this is your transfer it with a first time PC and HoloLens combination, you will need to enter a PIN.  
-![VisualStudio_Pin](https://user-images.githubusercontent.com/14026964/90338519-180ae380-e025-11ea-9093-e95e8c8f9916.png)
+![VisualStudio_Pin](https://user-images.githubusercontent.com/14026964/91731758-386c9d80-ebe2-11ea-8f58-7ae75e7ad7f6.png)
 
 On HoloLens, launch the Settings app and select the "Updates & Security" item.  
-![HoloLens_Setting](https://user-images.githubusercontent.com/14026964/90338510-15a88980-e025-11ea-8370-d952b300c2c9.jpg)
+![HoloLens_Setting](https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F20418%2F5123d5aa-217b-5059-86fa-8c664d3b17b7.png?ixlib=rb-1.2.2&auto=format&gif-q=60&q=75&s=584eb66fa7fa9a5acf40f48f8dcdc6bb)
 Select "For Developers" from the menu on the left, and then AirTap the "Pairing" button in the device detection item.  
-![HoloLens_Pairing](https://user-images.githubusercontent.com/14026964/90338513-16d9b680-e025-11ea-94bc-0219b353a819.jpg)
+![HoloLens_Pairing](https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F20418%2F0106c18b-2962-0603-30e3-790a4a180b7e.png?ixlib=rb-1.2.2&auto=format&gif-q=60&q=75&s=389d72607225a4305460cdbac8d5d796)
 
 When you see "Pairing Devices" and a 6-digit number appears at the bottom, input the same number in the PIN entry window on the Visual Studio side, then click OK.  
-![HoloLens_Pin](https://user-images.githubusercontent.com/14026964/90338623-e5151f80-e025-11ea-95fc-ec719aa0125d.jpg)
+![HoloLens_Pin](https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F20418%2F134534d1-2cf5-a088-1166-2b4a6da614dd.png?ixlib=rb-1.2.2&auto=format&gif-q=60&q=75&s=5661fc64204db5e95e238290e2480ff0)
 
 #### The case of creating package data and install to HoloLens via Device Portal
 
 In the top menu of Visual Studio, select "Project", "Store" -> "Create App Package".  
-![App_Package](https://user-images.githubusercontent.com/14026964/90338520-18a37a00-e025-11ea-82a7-81679fff8d42.png)
+![App_Package](https://user-images.githubusercontent.com/14026964/91731737-2f7bcc00-ebe2-11ea-970a-02c3abcdc52a.png)
 
 In the Create App Package window, select "Create a package for sideloading" and click the Next button.  
-![App_Package_Window](https://user-images.githubusercontent.com/14026964/90338521-193c1080-e025-11ea-927d-f88b20e8f30f.png)
+![App_Package_Window](https://user-images.githubusercontent.com/14026964/91731762-3acef780-ebe2-11ea-99e0-298e2c81a6e5.png)
 
 In the "Select package to create and solution configuration mapping" item, check only the item with the architecture of "x86" and click the Create button.  
-![App_Package_Target](https://user-images.githubusercontent.com/14026964/90338522-193c1080-e025-11ea-8a20-c7fc311bb65c.png)
+![App_Package_Target](https://user-images.githubusercontent.com/14026964/91731765-3d315180-ebe2-11ea-9ad5-2fbbec4ecd65.png)
 
 When the package creation is complete, the output destination for the package will be displayed.  
 ".appxbundle" file, etc will be created in the output destination.  
