@@ -86,21 +86,21 @@ If this is your transfer it with a first time PC and HoloLens combination, you w
 
 On HoloLens, launch the Settings app and select the "Updates & Security" item.  
 ![HoloLens_Setting](https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F20418%2F5123d5aa-217b-5059-86fa-8c664d3b17b7.png?ixlib=rb-1.2.2&auto=format&gif-q=60&q=75&s=584eb66fa7fa9a5acf40f48f8dcdc6bb)
-Select "For Developers" from the menu on the left, and then AirTap the "Pairing" button in the device detection item.  
+Select "For developers" from the menu on the left, and then AirTap the "Pair" button in the device detection item.  
 ![HoloLens_Pairing](https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F20418%2F0106c18b-2962-0603-30e3-790a4a180b7e.png?ixlib=rb-1.2.2&auto=format&gif-q=60&q=75&s=389d72607225a4305460cdbac8d5d796)
 
-When you see "Pairing Devices" and a 6-digit number appears at the bottom, input the same number in the PIN entry window on the Visual Studio side, then click OK.  
+When you see "Pair device" and a 6-digit number appears at the bottom, input the same number in the PIN entry window on the Visual Studio side, then click OK.  
 ![HoloLens_Pin](https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F20418%2F134534d1-2cf5-a088-1166-2b4a6da614dd.png?ixlib=rb-1.2.2&auto=format&gif-q=60&q=75&s=5661fc64204db5e95e238290e2480ff0)
 
 #### The case of creating package data and install to HoloLens via Device Portal
 
-In the top menu of Visual Studio, select "Project", "Store" -> "Create App Package".  
+In the top menu of Visual Studio, select "Project", "Store" -> "Create App Packages...".  
 ![App_Package](https://user-images.githubusercontent.com/14026964/91731737-2f7bcc00-ebe2-11ea-970a-02c3abcdc52a.png)
 
-In the Create App Package window, select "Create a package for sideloading" and click the Next button.  
+In the Create App Package window, select "I want to create packages for sideloading" and click the Next button.  
 ![App_Package_Window](https://user-images.githubusercontent.com/14026964/91731762-3acef780-ebe2-11ea-99e0-298e2c81a6e5.png)
 
-In the "Select package to create and solution configuration mapping" item, check only the item with the architecture of "x86" and click the Create button.  
+In the "Select the packages to create and the solution configuration mappings" item, check only the item with the architecture of "x86" and click the Create button.  
 ![App_Package_Target](https://user-images.githubusercontent.com/14026964/91731765-3d315180-ebe2-11ea-9ad5-2fbbec4ecd65.png)
 
 When the package creation is complete, the output destination for the package will be displayed.  
